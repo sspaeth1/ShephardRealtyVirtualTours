@@ -76,7 +76,7 @@
   }
   
   
-  .waypoint-loft{
+  .loft{
     position:absolute;
     top:125px;
     left:0px;
@@ -84,63 +84,57 @@
     z-index:100;
   }
   
-  .waypoint-deck{
+  .deck{
     position:absolute;
     top:10px;
     left:0;
     opacity: .75;
   }
   
-  .waypoint-masterBedroom1{
+  .masterBedroom1{
     position:absolute;
     top:5px;
     left: 210px;
     opacity: .75;
   }
   
-  .waypoint-masterBedroom2{
+  
+  .masterBedroom2{
     position:absolute;
-    top:250px;
-    left:10px;
+    top:-18px;
+    left:277px;
     opacity: .75;
   }
   
-  .waypoint-bedroom2{
-    position:absolute;
-    top:-11px;
-    left:285px;
-    opacity: .75;
-  }
-  
-  .waypoint-bathroom{
+  .masterBath2{
     position:absolute;
     top:26px;
     left:305px;
     opacity: .75;
   }
   
-  .waypoint-livingRoom{
+  .livingRoom{
     position:absolute;
     top:175px;
     left:159px;
     opacity: .75;
   }
   
-  .waypoint-porch{
+  .foyer{
     position:absolute;
     top:168px;
     left:282px;
     opacity: .75;
   }
   
-  .waypoint-dining{
+  .livingRoom2{
     position:absolute;
     top:103px;
     left:119px;
     opacity: .75;
   }
   
-  .waypoint-front{
+  .front{
     position:absolute;
     top:227px;
     left:273px;
@@ -201,23 +195,21 @@
     animation: waypointHover 0.5s 1s infinite alternate;
   }
   
-  #embedded360{
-    height: 512px;
-    width: 1024px;
+
+  #container_360{
+    width: 93.6%;
+    height: 512px; 
     z-index:10000;
     display: block;
     margin:20px;
     margin-bottom:100px;
-    border: 5px solid #304468;
-    background: #f6f6f6;
-  }
-
-  #container_360{
-    width: 1024px;
-    height: 512px;
 
   }
   
+  canvas{
+    border: 5px solid #304468;
+  }
+
   #embedded360 H1{
     display:inline;
   }

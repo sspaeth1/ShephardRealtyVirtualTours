@@ -82,17 +82,18 @@
   
  <section class="layout">
           <div class="layout-1"> 
-            <a href="#" alt="loft">   <img class="waypoint-loft" src="images/marker_ylw.png"></a>
+            <a href="#" alt="loft">   <img class="loft" src="images/marker_ylw.png"></a>
           </div >
         <div class=" layout-2">   
-          <a href="#" alt="deck"> <img class="waypoint-deck"  src="images/marker_ylw.png"> </a>
-          <a href="#" alt="masterBedroom1"> <img class="waypoint-masterBedroom1" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="masterBedroom2"> <img class="waypoint-bedroom2" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="bathroom"> <img class="waypoint-bathroom" src="images/marker_ylw.png"></a>
-          <a href="#" alt="livingRoom"> <img class="waypoint-livingRoom" src="images/marker_ylw.png"></a>
-          <a href="#" alt="dining"> <img class="waypoint-dining" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="porch"> <img class="waypoint-porch" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="front"> <img class="waypoint-front" src="images/marker_ylw.png"> </a>
+           <img onclick="select360Image()" class="waypoint-deck" data="deck" src="images/marker_ylw.png">
+          <a href="#" alt="masterBedroom1"> <img class="masterBedroom1" src="images/marker_ylw.png"> </a>
+          <a href="#" alt="masterBedroom2"> <img class="masterBedroom2" src="images/marker_ylw.png"> </a>
+          <a href="#" alt="bathroom"> <img class="masterBath2 " src="images/marker_ylw.png"></a>
+          <a href="#" alt="livingRoom"> <img class="livingRoom" src="images/marker_ylw.png"></a>
+          <a href="#" alt="dining"> <img class="livingRoom2" src="images/marker_ylw.png"> </a>
+          <a href="#" alt="foyer"> <img class="foyer" src="images/marker_ylw.png"> </a>
+          <a href="#" alt="front"> <img class="front" src="images/marker_ylw.png"> </a>
+
             
       </div>
       <div class=" layout-3"> </div>
@@ -158,11 +159,16 @@
             deck ="609_Otter_Rd/2k/deck_2k.jpg",
             loft ="609_Otter_Rd/2k/loft3_2k.jpg",
             loft2 ="609_Otter_Rd/2k/loft2_2k.jpg";
+
 				var material = new THREE.MeshBasicMaterial( {
 				       map: new THREE.TextureLoader().load(front)
         } );
         
 
+
+        function select360Image(){
+          var grabbedName = document.elem
+        }
 
 
 				mesh = new THREE.Mesh( geometry, material );
@@ -301,7 +307,7 @@
 
 				if ( isUserInteracting === false ) {
 
-					lon += 0.01;
+					lon += 0.005;
 
 				}
 
