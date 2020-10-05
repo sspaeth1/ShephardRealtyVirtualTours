@@ -1,0 +1,238 @@
+
+.container{
+    display: flex;
+    flex-wrap:wrap;
+  }
+  .header{
+    width: 100%;
+    height: 200px;
+    background: red;
+    z-index:1;
+    position:relative;
+  }
+  
+  .blueBall{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    z-index:20;
+    background-color:blue;
+    position:absolute;
+    top:20px;
+    left: 20px;
+  }
+  
+  .address{
+    width:100%;
+  }
+  
+  
+  .layout{
+    display:flex;
+    flex-wrap:wrap;
+    list-style: none;
+    height: 200px;
+    margin: 20px;
+  }
+  
+  ul.layout li{
+    margin: 5px;
+  }
+  
+  .layout-1{
+    background:  url("../images/frontLoft.png") no-repeat;
+    height:250px;
+    width: 200px;
+    position:relative;
+  }
+  
+  .layout-2{
+    background: white url("../images/frontFisrtFloor.png") no-repeat;
+    height:400px;
+    width: 400px;
+    margin: 15px;
+    position:relative;
+  }
+  
+  .layout-3{
+    background: white url("../images/frontbasement.png" )   no-repeat;
+    height:400px;
+    width: 400px;
+    margin: 15px;
+    position:relative;
+  }
+  
+  
+  .floorplan1{
+    position:relative;
+  }
+  
+  .floorplan2{
+    position:relative;
+  }
+  
+  .floorplan3{
+    position:relative;
+  }
+  
+  
+  .waypoint-loft{
+    position:absolute;
+    top:125px;
+    left:0px;
+    opacity: .75;
+    z-index:100;
+  }
+  
+  .waypoint-deck{
+    position:absolute;
+    top:10px;
+    left:0;
+    opacity: .75;
+  }
+  
+  .waypoint-masterBedroom1{
+    position:absolute;
+    top:5px;
+    left: 210px;
+    opacity: .75;
+  }
+  
+  .waypoint-masterBedroom2{
+    position:absolute;
+    top:250px;
+    left:10px;
+    opacity: .75;
+  }
+  
+  .waypoint-bedroom2{
+    position:absolute;
+    top:-11px;
+    left:285px;
+    opacity: .75;
+  }
+  
+  .waypoint-bathroom{
+    position:absolute;
+    top:26px;
+    left:305px;
+    opacity: .75;
+  }
+  
+  .waypoint-livingRoom{
+    position:absolute;
+    top:175px;
+    left:159px;
+    opacity: .75;
+  }
+  
+  .waypoint-porch{
+    position:absolute;
+    top:168px;
+    left:282px;
+    opacity: .75;
+  }
+  
+  .waypoint-dining{
+    position:absolute;
+    top:103px;
+    left:119px;
+    opacity: .75;
+  }
+  
+  .waypoint-front{
+    position:absolute;
+    top:227px;
+    left:273px;
+    opacity: .75;
+  }
+  
+  
+  
+  .header_img{
+   max-width:1250px;
+    width: 100%;
+   margin: auto;
+    left:50%;
+    display: block;
+    z-index:1;
+  }
+  
+  .address{
+    flex:left;
+    position:block;
+    border: 1px solid grey;
+    padding: 10px;
+  }
+  
+  section.address h1{
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  
+  div.virtual h1, div.virtual h1 span {
+    font-weight: 900;
+    margin-right: 10px;
+    font-size:5rem;
+  }
+  
+  .blue{
+    color: #304468;
+  }
+  
+  section.address h1, section.address h2, section.address p{
+    display:inline;
+  }
+  
+
+  
+  @keyframes waypointHover {
+      from { transform : translatey(0) }
+      to   { transform : translateY(-10%) }
+  }
+  
+  @keyframes grow {
+      from { transform : scale(.9); }
+      to   { transform : scale(1); }
+  }
+  
+  [class*="waypoint"]:hover{
+    opacity: 1;
+    animation: waypointHover 0.5s 1s infinite alternate;
+  }
+  
+  #embedded360{
+    height: 512px;
+    width: 1024px;
+    z-index:10000;
+    display: block;
+    margin:20px;
+    margin-bottom:100px;
+    border: 5px solid #304468;
+    background: #f6f6f6;
+  }
+
+  #container_360{
+    width: 1024px;
+    height: 512px;
+
+  }
+  
+  #embedded360 H1{
+    display:inline;
+  }
+  
+  #embedded360 H3{
+    color: darkblue;
+    font-weight: 400;
+    display:inline;
+  }
+  
+  img._360{
+    display:inline;
+    margin-left: 10px;
+  }
+  
+  .a-canvas {
+       border-top: 5px #2b853d solid;
+  }
