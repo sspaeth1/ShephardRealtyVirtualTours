@@ -7,51 +7,7 @@
     <meta name="author" content="Kumar Ahir - VR Designer">
     <link rel="stylesheet" href="css/format.css" type="text/css">
     <link rel="stylesheet" href="css/styles.min.css" type="text/css">
-    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-look-at-component@0.5.1/dist/aframe-look-at-component.min.js"></script>
-    <script>
-      AFRAME.registerComponent('hotspots',{
-        init:function(){
-            this.el.addEventListener('reloadspots',function(evt){
-            
-            //get the entire current spot group and scale it to 0
-            var currspotgroup=document.getElementById(evt.detail.currspots);
-            currspotgroup.setAttribute("scale","0 0 0");
-            
-            //get the entire new spot group and scale it to 1
-            var newspotgroup=document.getElementById(evt.detail.newspots);
-            newspotgroup.setAttribute("scale","1 1 1");
-          });
-        }
-      });
-      AFRAME.registerComponent('spot',{
-        schema:{
-          linkto:{type:"string",default:""},
-          spotgroup:{type:"string",default:""}
-        },
-        init:function(){
-          
-          //add image source of hotspot icon
-          this.el.setAttribute("src","#hotspot");
-          //make the icon look at the camera all the time
-          this.el.setAttribute("look-at","#cam");
-          
-          var data=this.data;
-          
-          this.el.addEventListener('click',function(){
-            //set the skybox source to the new image as per the spot
-            var sky=document.getElementById("skybox");
-            sky.setAttribute("src",data.linkto);
-            
-            var spotcomp=document.getElementById("spots");
-            var currspots=this.parentElement.getAttribute("id");
-            //create event for spots component to change the spots data
-            spotcomp.emit('reloadspots',{newspots:data.spotgroup,currspots:currspots});
-          });
-        }
-      });
-    </script>
+  
   </head>
   <body>
     <div class="utilBarWrap">
@@ -77,262 +33,225 @@
     <h2> Grantham, NH </h2>
   </section>
       
-      
 
+<script>
+  window.onload( localStorage.setItem("current360image", "609_Otter_Rd/2k/outsideFrontDoor_2k.jpg"))
+  
+         function select360Image(elem){
+              var grabbedName = elem;            
+              localStorage.setItem("current360image", grabbedName);
+              document.querySelector('canvas').remove();
+               threeJS();
+           }
+
+</script>
   
  <section class="layout">
+   
+  
           <div class="layout-1"> 
-            <a href="#" alt="loft">   <img class="loft" src="images/marker_ylw.png"></a>
+            <span class="609_Otter_Rd/2k/loft1_2k.jpg" onclick="select360Image(this.className)">  <img class="waypoint-loft" src="images/marker_ylw.png"></span>
           </div >
         <div class=" layout-2">   
-           <img onclick="select360Image()" class="waypoint-deck" data="deck" src="images/marker_ylw.png">
-          <a href="#" alt="masterBedroom1"> <img class="masterBedroom1" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="masterBedroom2"> <img class="masterBedroom2" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="bathroom"> <img class="masterBath2 " src="images/marker_ylw.png"></a>
-          <a href="#" alt="livingRoom"> <img class="livingRoom" src="images/marker_ylw.png"></a>
-          <a href="#" alt="dining"> <img class="livingRoom2" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="foyer"> <img class="foyer" src="images/marker_ylw.png"> </a>
-          <a href="#" alt="front"> <img class="front" src="images/marker_ylw.png"> </a>
+          <span  class="609_Otter_Rd/2k/deck_2k.jpg" onclick="select360Image(this.className)" > <img class="waypoint-deck" src="images/marker_ylw.png"></span>
+          <span class="609_Otter_Rd/2k/masterBedroom1_2k.jpg" onclick="select360Image(this.className)">  <img class="waypoint-masterBedroom1" src="images/marker_ylw.png"> </span>
+          <span class="609_Otter_Rd/2k/masterBedroom2_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-masterBedroom2" src="images/marker_ylw.png"> </span>
+          <span class="609_Otter_Rd/2k/masterBath1_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-masterBath2 " src="images/marker_ylw.png"></span>
+          <span class="609_Otter_Rd/2k/livingroom3_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-livingRoom" src="images/marker_ylw.png"></span>
+          <span class="609_Otter_Rd/2k/livingRoom_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-livingRoom2" src="images/marker_ylw.png"> </span>
+          <span class="609_Otter_Rd/2k/foyer_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-foyer" src="images/marker_ylw.png"> </span>
+          <span class="609_Otter_Rd/2k/outsideFrontDoor_2k.jpg" onclick="select360Image(this.className)"> <img class="waypoint-front" src="images/marker_ylw.png"> </span>
 
-            
+ 
       </div>
       <div class=" layout-3"> </div>
      
 <hr>
 
 
+<div id="embedded360">
+  <span> <h1> <img class="_360" src="images/360icon.png">
+    image
+    </h1>
+  <h3>
+    | Click/tap and drag to scroll around the 360 image and view the surrounding environment
+  </h3> </span>
+  <div id="container_360">
+  </div>
+ 
+  <script src="js/three.min.js"></script>   
 
-   <div id="embedded360">
-     <span> <h1> <img class="_360" src="images/360icon.png">
-       image
-       </h1>
-     <h3>
-       | Click/tap and drag to scroll around the 360 image and view the surrounding environment
-     </h3> </span>
-     <div id="container_360">
+  <script>
+   function threeJS(){
+    var camera, scene, renderer;
 
-     </div>
+    var isUserInteracting = false,
+    onMouseDownMouseX = 0, onMouseDownMouseY = 0,
+    lon = 0, onMouseDownLon = 0,
+    lat = 0, onMouseDownLat = 0,
+    phi = 0, theta = 0;
+
+    init();
+    animate();
+
+    function init() {
+
+      var container, mesh;
+
+      container = document.getElementById( 'container_360' );
+
+      camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+      camera.target = new THREE.Vector3( 0, 0, 0 );
+
+      scene = new THREE.Scene();
+
+      var geometry = new THREE.SphereGeometry( 500, 60, 40 );
+      geometry.scale( - 1, 1, 1 );
+      
+
+      var material = new THREE.MeshBasicMaterial( {
+            map: new THREE.TextureLoader().load(localStorage.getItem('current360image'))
+      } );
+      
+      mesh = new THREE.Mesh( geometry, material );
+
+      scene.add( mesh );
+
+      renderer = new THREE.WebGLRenderer();
+      renderer.setPixelRatio( window.devicePixelRatio );
+      renderer.setSize( window.innerWidth * .7, window.innerHeight * .77 );
+      container.appendChild( renderer.domElement );
+
+      document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+      document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+      document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+      document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
+      document.addEventListener( 'MozMousePixelScroll', onDocumentMouseWheel, false);
+
+      //
+
+      document.addEventListener( 'dragover', function ( event ) {
+
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+
+      }, false );
+
+      document.addEventListener( 'dragenter', function ( event ) {
+        document.body.style.opacity = 0.5;
+      }, false );
+
+      document.addEventListener( 'dragleave', function ( event ) {
+        document.body.style.opacity = 1;
+
+      }, false );
+
+      document.addEventListener( 'drop', function ( event ) {
+        event.preventDefault();
+
+        var reader = new FileReader();
+        reader.addEventListener( 'load', function ( event ) {
+
+          material.map.image.src = event.target.result;
+          material.map.needsUpdate = true;
+
+        }, false );
+        reader.readAsDataURL( event.dataTransfer.files[ 0 ] );
+        document.body.style.opacity = 1;
+      }, false );
+
+      window.addEventListener( 'resize', onWindowResize, false );
+    }
+
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize( window.innerWidth * .7, window.innerHeight * .77 );
+    }
+
+    function onDocumentMouseDown( event ) {
+
+      event.preventDefault();
+
+      isUserInteracting = true;
+
+      onPointerDownPointerX = event.clientX;
+      onPointerDownPointerY = event.clientY;
+
+      onPointerDownLon = lon;
+      onPointerDownLat = lat;
+    }
+
+    function onDocumentMouseMove( event ) {
+      if ( isUserInteracting === true ) {
+        lon = ( onPointerDownPointerX - event.clientX ) * 0.1 + onPointerDownLon;
+        lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
+      }
+    }
+
+    function onDocumentMouseUp( event ) {
+      isUserInteracting = false;
+    }
+
+    function onDocumentMouseWheel( event ) {
+      // WebKit
+
+      if ( event.wheelDeltaY ) {
+        camera.fov -= event.wheelDeltaY * 0.05;
+
+      // Opera / Explorer 9
+
+      } else if ( event.wheelDelta ) {
+        camera.fov -= event.wheelDelta * 0.05;
+
+      // Firefox
+
+      } else if ( event.detail ) {
+        camera.fov += event.detail * 1.0;
+      }
+
+      camera.updateProjectionMatrix();
+    }
+
+    function animate() {
+      requestAnimationFrame( animate );
+      update();
+    }
+
+    function update() {
+      if ( isUserInteracting === false ) {
+        lon += 0.005;
+      }
+
+      lat = Math.max( - 85, Math.min( 85, lat ) );
+      phi = THREE.Math.degToRad( 90 - lat );
+      theta = THREE.Math.degToRad( lon );
+
+      camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
+      camera.target.y = 500 * Math.cos( phi );
+      camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
+
+      camera.lookAt( camera.target );
+
+      /*
+      // distortion
+      camera.position.copy( camera.target ).negate();
+      */
+
+      renderer.render( scene, camera );
+    }
+   }
     
+  window.onload( threeJS());
+    </script>
        
     
       </div>
   </section>
   
- <script src="build/three.min.js"></script>   
-  <script>
-
-			var camera, scene, renderer;
-
-			var isUserInteracting = false,
-			onMouseDownMouseX = 0, onMouseDownMouseY = 0,
-			lon = 0, onMouseDownLon = 0,
-			lat = 0, onMouseDownLat = 0,
-			phi = 0, theta = 0;
-
-			init();
-			animate();
-
-			function init() {
-
-				var container, mesh;
-
-				container = document.getElementById( 'container_360' );
-
-				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
-				camera.target = new THREE.Vector3( 0, 0, 0 );
-
-				scene = new THREE.Scene();
-
-				var geometry = new THREE.SphereGeometry( 500, 60, 40 );
-        geometry.scale( - 1, 1, 1 );
-        
-        var masterBedroom1 = "609_Otter_Rd/2k/masterBedroom1_2k.jpg",
-            masterBedroom2 = "609_Otter_Rd/2k/masterBedroom2_2k.jpg", 
-            loft = "609_Otter_Rd/2k/loft1_2k.jpg", 
-            livingRoom = "609_Otter_Rd/2k/livingRoom_2k.jpg", 
-            livingRoom2 ="609_Otter_Rd/2k/livingroom3_2k.jpg",
-            masterBath ="609_Otter_Rd/2k/masterBath1_2k.jpg",
-            porch ="609_Otter_Rd/2k/portch_2k.jpg",
-            masterBath2 ="609_Otter_Rd/2k/masterBath_2k.jpg4",
-            foyer ="609_Otter_Rd/2k/foyer_2k.jpg",
-            front ="609_Otter_Rd/2k/outsideFrontDoor_2k.jpg",
-            deck ="609_Otter_Rd/2k/deck_2k.jpg",
-            loft ="609_Otter_Rd/2k/loft3_2k.jpg",
-            loft2 ="609_Otter_Rd/2k/loft2_2k.jpg";
-
-				var material = new THREE.MeshBasicMaterial( {
-				       map: new THREE.TextureLoader().load(front)
-        } );
-        
-
-
-        function select360Image(){
-          var grabbedName = document.elem
-        }
-
-
-				mesh = new THREE.Mesh( geometry, material );
-
-				scene.add( mesh );
-
-				renderer = new THREE.WebGLRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-				renderer.setSize( window.innerWidth * .77, window.innerHeight * .66 );
-				container.appendChild( renderer.domElement );
-
-				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-				document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
-				document.addEventListener( 'MozMousePixelScroll', onDocumentMouseWheel, false);
-
-				//
-
-				document.addEventListener( 'dragover', function ( event ) {
-
-					event.preventDefault();
-					event.dataTransfer.dropEffect = 'copy';
-
-				}, false );
-
-				document.addEventListener( 'dragenter', function ( event ) {
-
-					document.body.style.opacity = 0.5;
-
-				}, false );
-
-				document.addEventListener( 'dragleave', function ( event ) {
-
-					document.body.style.opacity = 1;
-
-				}, false );
-
-				document.addEventListener( 'drop', function ( event ) {
-
-					event.preventDefault();
-
-					var reader = new FileReader();
-					reader.addEventListener( 'load', function ( event ) {
-
-						material.map.image.src = event.target.result;
-						material.map.needsUpdate = true;
-
-					}, false );
-					reader.readAsDataURL( event.dataTransfer.files[ 0 ] );
-
-					document.body.style.opacity = 1;
-
-				}, false );
-
-				//
-
-				window.addEventListener( 'resize', onWindowResize, false );
-
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-        renderer.setSize( window.innerWidth * .77, window.innerHeight * .66 );
-
-			}
-
-			function onDocumentMouseDown( event ) {
-
-				event.preventDefault();
-
-				isUserInteracting = true;
-
-				onPointerDownPointerX = event.clientX;
-				onPointerDownPointerY = event.clientY;
-
-				onPointerDownLon = lon;
-				onPointerDownLat = lat;
-
-			}
-
-			function onDocumentMouseMove( event ) {
-
-				if ( isUserInteracting === true ) {
-
-					lon = ( onPointerDownPointerX - event.clientX ) * 0.1 + onPointerDownLon;
-					lat = ( event.clientY - onPointerDownPointerY ) * 0.1 + onPointerDownLat;
-
-				}
-
-			}
-
-			function onDocumentMouseUp( event ) {
-
-				isUserInteracting = false;
-
-			}
-
-			function onDocumentMouseWheel( event ) {
-
-				// WebKit
-
-				if ( event.wheelDeltaY ) {
-
-					camera.fov -= event.wheelDeltaY * 0.05;
-
-				// Opera / Explorer 9
-
-				} else if ( event.wheelDelta ) {
-
-					camera.fov -= event.wheelDelta * 0.05;
-
-				// Firefox
-
-				} else if ( event.detail ) {
-
-					camera.fov += event.detail * 1.0;
-
-				}
-
-				camera.updateProjectionMatrix();
-
-			}
-
-			function animate() {
-
-				requestAnimationFrame( animate );
-				update();
-
-			}
-
-			function update() {
-
-				if ( isUserInteracting === false ) {
-
-					lon += 0.005;
-
-				}
-
-				lat = Math.max( - 85, Math.min( 85, lat ) );
-				phi = THREE.Math.degToRad( 90 - lat );
-				theta = THREE.Math.degToRad( lon );
-
-				camera.target.x = 500 * Math.sin( phi ) * Math.cos( theta );
-				camera.target.y = 500 * Math.cos( phi );
-				camera.target.z = 500 * Math.sin( phi ) * Math.sin( theta );
-
-				camera.lookAt( camera.target );
-
-				/*
-				// distortion
-				camera.position.copy( camera.target ).negate();
-				*/
-
-				renderer.render( scene, camera );
-
-			}
-
-    </script>
-
 </div>
+
 
   
     </div>
