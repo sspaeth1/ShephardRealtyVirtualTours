@@ -10,7 +10,6 @@
   
   </head>
   <body>
-    <div class="modalColor"></div>
     <div class="utilBarWrap">
     <aside id="sidebar3"><div id="image-64065" class="widget image container"><a href="/" target="_self"><img src="https://d3w216np43fnr4.cloudfront.net/5936/64065/1.jpg?version=1491245641"></a></div><div class="sign-up">
 <span class="loggedout"><a href="/user/register/">Sign Up</a> | </span>
@@ -36,36 +35,22 @@
       
 
 <script>
-  
-  window.onload( localStorage.setItem("current360image", "609_Otter_Rd/2k/outsideFrontDoor_2k.jpg"));
+  window.onload( localStorage.setItem("current360image", "609_Otter_Rd/2k/outsideFrontDoor_2k.jpg"))
   
          function select360Image(elem){
               var grabbedName = elem;            
               localStorage.setItem("current360image", grabbedName);
-              document.getElementById('embedded360').setAttribute('style', "visibility:inherit");
-              document.querySelector('.modalColor').setAttribute('style', 'z-index: 200');
-              document.querySelector('.modalColor').setAttribute('style', 'background-color: rgba(70, 65, 65, .5)');
               document.querySelector('canvas').remove();
                threeJS();
            }
 
 </script>
-
-<script>
-
-  function closeOut(){
-    document.querySelector('img.xOut').parentElement.setAttribute('style', "visibility:hidden");
-    document.querySelector('.modalColor').parentElement.setAttribute('style', "visibility:hidden");
-    document.querySelector('.modalColor').setAttribute('style', 'z-index: 0');
-  }
-              
-</script>
-
+  
  <section class="layout">
    
   
           <div class="layout-1"> 
-            <div class="609_Otter_Rd/2k/loft1_2k.jpg" onclick="select360Image(this.className)">  <img class="waypoint-loft" src="images/marker_ylw.png"></div>
+            <span class="609_Otter_Rd/2k/loft1_2k.jpg" onclick="select360Image(this.className)">  <img class="waypoint-loft" src="images/marker_ylw.png"></span>
           </div >
         <div class=" layout-2">   
           <span  class="609_Otter_Rd/2k/deck_2k.jpg" onclick="select360Image(this.className)" > <img class="waypoint-deck" src="images/marker_ylw.png"></span>
@@ -84,14 +69,13 @@
 <hr>
 
 
-<div id="embedded360" style="visibility: hidden;">
-  <img class="xOut" src="images/xOut.png" alt="close modal popup" onclick="closeOut()">
-  <div> <h1> <img class="_360" src="images/360icon.png">
+<div id="embedded360">
+  <span> <h1> <img class="_360" src="images/360icon.png">
     image
     </h1>
   <h3>
     | Click/tap and drag to scroll around the 360 image and view the surrounding environment
-  </h3> </div>
+  </h3> </span>
   <div id="container_360">
   </div>
  
