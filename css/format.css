@@ -12,6 +12,19 @@ body {
   } 
 } 
 
+.hamburger {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
 
 .container{
     display: flex;
@@ -236,6 +249,9 @@ body {
     animation: waypointHover 0.5s 1s infinite alternate;
   }
   
+  .menu .mobile-nav .navbar-toggle:before{
+    content: url('../images/menuIcon.png') !important;
+  }
 
   .modalColor{
     position: absolute;
@@ -245,9 +261,7 @@ body {
     }
 
 
-  #container_360{
-    width: 93.6%;
-    height: 512px; 
+  #container_360{ 
     z-index:10000;
     display: block;
     margin:20px;
@@ -261,7 +275,9 @@ body {
   }
 #embedded360{
   position:absolute;
-  top: 388px;
+  top: 10%;
+  right: 5%;
+  left: 5%;
   z-index: 900;
   background-color: white;
   border: #304468 solid 2px;
@@ -283,17 +299,20 @@ body {
 }
 
 .xOut:hover{
- opacity: .9;
+ filter:drop-shadow(5px 5px 5px #333);
 }
 
-@media (max-width: 600px){
+@media (max-width: 900px){
   #embedded360{
     width: 86%;
     right: 4%;
     margin: auto;
   } 
   .xOut{
-    left: 95%;
+    width: 80px;
+    height: 80px;
+    left: 89%;
+    top: -40px;
   }
 }
 
